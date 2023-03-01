@@ -1,0 +1,1944 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+body{
+    background-color: rgba(237, 123, 73, 1);
+}
+
+body::-webkit-scrollbar{
+    width: 0;
+}
+
+
+button{
+    cursor: pointer;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.top{
+    height: 45px;
+
+    background-color: black;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
+}
+
+
+
+.main{
+    height: fit-content;
+}
+
+
+.main .navbar{
+    width: 100%;
+    height: 100vh;
+    
+    position: fixed;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    
+    padding: 5% 4%;
+    
+    background-color: rgba(237, 123, 73, 1);
+
+    font-family: "Roboto", sans-serif;
+    
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+
+
+.main .navbar .header{
+    width: 100%;
+    height: 50px;
+    position: relative;
+    padding: 0;
+}
+
+
+.main .navbar .header img{
+    width: 20px;
+}
+
+.main .navbar .header > div{
+    display: block;
+    gap: 0;
+}
+
+.main .navbar .header > div button{
+    width: 45px;
+    height: 45px;
+    background: none;
+}
+
+
+
+.main .navbar .links{
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.main .navbar .links a{
+    color: black;
+    font-size: 1.2em;
+}
+
+
+
+.main .header{
+    width: 100%;
+    height: 100px;
+    padding: 0 14%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Roboto", sans-serif;
+
+    position: absolute;
+}
+
+
+.main .header #burger-menu{
+    display: none;
+}
+
+
+.main .header > div{
+    display: flex;
+    gap: 30px;
+}
+
+.main .header > div a{
+    font-size: 0.9em;
+    color: black;
+}
+
+
+.main .header .logo{
+    width: 7%;
+    position: absolute;
+    top: 35%;
+    left: 46.5%;
+}
+
+.main .header #lang-btn{
+    right: 3%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: none;
+}
+
+
+
+
+
+.main .content{
+    height: 850px;
+    background-image: url("./img/main-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+    text-align: left;
+}
+
+.main .content h1{
+    font-size: 5em;
+    font-weight: 300;
+    margin-bottom: 15%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.carousel-section{
+    height: fit-content;
+    background-color: rgba(237, 123, 73, 1);
+}
+
+.carousel-section .title{
+    height: 400px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20%;
+
+    position: relative;
+}
+
+
+.carousel-section .title div:first-of-type{
+    width: fit-content;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-section .title div:first-of-type img{
+    width: 210px;
+    animation: 15s infinite spinning-circle linear;
+}
+
+@keyframes spinning-circle {
+    0%   {transform: rotate(0deg)}
+    100%   {transform: rotate(360deg)}
+}  
+
+.carousel-section .title div:first-of-type h1{
+    position: absolute;
+    color: white;
+    font-size: 4em;
+}
+
+
+
+.carousel-section .title div:last-of-type{
+    font-family: "Roboto", sans-serif;
+    width: 60%;
+}
+
+.carousel-section .title div:last-of-type h1{
+    font-size: 5em;
+}
+
+.carousel-section .title div:last-of-type p{
+    font-size: 1em;
+    width: 90%;
+}
+
+
+
+
+
+.carousel-section .carousel{
+    height: 800px;
+    display: flex;
+
+    cursor: grab;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.carousel-section .carousel::-webkit-scrollbar{
+    width: 0;
+}
+
+
+.carousel-section .carousel .card{
+    min-width: 350px;
+    height: 600px;
+
+    padding: 0 20px;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+    font-family: "Roboto", sans-serif;
+}
+
+.carousel-section .carousel .card .background-circle{
+    /* position: absolute; */
+    /* top: 0; */
+    /* left: 0; */
+    /* z-index: 0; */
+
+    width: 100%;
+    height: 87%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 275px;
+
+}
+
+.carousel-section .carousel .card .background-circle img{
+    width: 350px;
+
+    z-index: 10;
+}
+
+.carousel-section .carousel .card h1{
+    z-index: 9;
+    width: 100%;
+
+    font-size: 2em;
+    margin-top: -15%;
+}
+
+.carousel-section .carousel .card p{
+    width: 100%;
+
+    font-size: 1.3em;
+    font-weight: 700;
+    margin-bottom: 5%;
+}
+
+
+.carousel-section .carousel .card div:last-of-type{
+    width: 50%;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    border: none;
+    border-radius: 50px;
+
+    align-self: flex-start;
+}
+
+.carousel-section .carousel .card div:last-of-type p{
+    width: fit-content;
+    margin: 0;
+
+    font-size: 1em;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.three-pictures-section{
+    height: 200vh;
+
+    background-color: rgba(237, 123, 73, 1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14%;
+}
+
+
+
+.three-pictures-section .title{
+    width: 35%;
+    height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: "Roboto", sans-serif;
+}
+
+.three-pictures-section .title h1{
+    font-size: 4em;
+    white-space: nowrap;
+}
+
+.three-pictures-section .title p{
+    font-size: 1.2em;
+}
+
+.three-pictures-section .title button{
+    width: 300px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    overflow-x: hidden;
+}
+
+.three-pictures-section .title button p{
+    min-width: 300%;
+    height: 100%;
+    display: flex;    
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: red; */
+}
+
+.three-pictures-section .title button p:hover{
+    animation: linear running-string 4s infinite;
+}
+
+
+
+.three-pictures-section .pictures{
+    width: 50%;
+    height: 600px;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.three-pictures-section .pictures img{
+    width: 90%;
+
+    position: absolute;
+}
+
+.three-pictures-section .pictures img:nth-of-type(1){
+    width: 115%;
+    left: -20%;
+}
+
+.three-pictures-section .pictures img:nth-of-type(2){
+    width: 115%;
+    right: -20%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.products-review{
+    background-color: rgba(237, 123, 73, 1);
+    display: flex;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+
+}
+
+
+
+.products-review .product-description{
+    width: 56%;
+    height: 840px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10% 0;
+    padding-left: 14%;
+
+    background-color: rgba(190, 90, 75, 1);
+    border-top-right-radius: 220px;
+
+}
+
+.products-review .product-description > h1{
+    width: 100%;
+
+    font-size: 5em;
+}
+
+.products-review .product-description .title{
+    width: 42%;
+    height: 350px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 5%;
+}
+
+.products-review .product-description .title h1{
+    font-size: 2.5em;
+}
+
+.products-review .product-description .title p{
+    font-size: 1.1em;
+}
+
+.products-review .product-description .title h4{
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.products-review button{
+    width: 200px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    background-color: black;
+    color: white;
+    border-radius: 30px;
+    overflow-x: hidden;
+    position: relative;
+    z-index: 90;
+}
+
+.products-review button p{
+    min-width: 300%;
+    height: 100%;
+    display: flex;    
+    align-items: center;
+    justify-content: space-around;
+
+    /* background-color: red; */
+}
+
+.products-review button p:hover{
+    animation: linear running-string 4s infinite;
+}
+
+
+
+.products-review .product-description .image{
+    position: relative;
+}
+
+.products-review .product-description .image img:first-of-type{
+    position: relative;
+    z-index: 100;
+}
+
+.products-review .product-description .image img:last-of-type{
+    position: absolute;
+    top: -18%;
+    right: 3%;
+    z-index: 0;
+}
+
+
+
+
+
+.products-review .products{
+    width: 17%;
+    height: 90vh;
+
+    margin-left: 7%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.products-review .products p{
+    font-size: 1.2em;
+    margin-bottom: 10%;
+}
+
+
+
+.products-review .products .products-list{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 15%;
+}
+
+.products-review .products .products-list > div{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.products-review .products .products-list > div h2{
+    font-size: 2.3em;
+
+    margin-bottom: 2%;
+    transition: 0.2s;
+}
+
+.products-review .products .products-list > div hr{
+    height: 2px;
+    border: none;
+    background-color: black;
+}
+
+.products-review .products .products-list > div hr:last-of-type{
+    width: 0;
+    background-color: white;
+    transition: 0.5s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.slider{
+    width: 100%;
+    height: 580px;
+
+    background-color: rgba(233, 168, 198, 1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    font-family: "Roboto", sans-serif;
+    position: relative;
+}
+
+.slider > h1{
+    position: absolute;
+    top: 20%;
+
+    font-size: 1.5em;
+    font-weight: 300;
+    text-align: center;
+}
+
+
+.slider > div{
+    width: 60%;
+    height: 100%;
+
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+
+    transition: 0.5s;
+}
+
+.slider > div:nth-of-type(2){
+    opacity: 0;
+}
+
+.slider > div > div{
+    width: 350px;
+    height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.slider > div > div h1{
+    margin: 5% 0;
+}
+
+.slider .dots{
+    width: 40px;
+
+    position: absolute;
+    bottom: -35%;
+
+    user-select: none;
+}
+
+.checked{
+    background-color: black;
+}
+
+.slider .dots > div{
+    width: 15px;
+    height: 15px;
+
+    border: 1px solid black;
+
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.three-pictures-section:nth-of-type(6){
+    height: 1200px;
+
+    background-color: rgba(245, 175, 185, 1);
+}
+
+
+
+.three-pictures-section:nth-of-type(6) .title{
+    width: 350px;
+    height: 450px;
+    position: relative;
+
+}
+
+.three-pictures-section:nth-of-type(6) .title h1{
+    font-size: 5em;
+    white-space: normal;
+}
+
+.three-pictures-section:nth-of-type(6) .title div:first-of-type{
+    width: fit-content;
+
+    position: absolute;
+    top: -60%;
+    right: -30%;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.three-pictures-section:nth-of-type(6) .title div:first-of-type img{
+    width: 250px;
+    animation: 15s infinite spinning-circle linear;
+}
+
+.three-pictures-section:nth-of-type(6) .title div:first-of-type img:last-of-type{
+    position: absolute;
+    animation: none;
+}
+
+
+
+.three-pictures-section:nth-of-type(6) .pictures img:nth-of-type(1){
+    width: 115%;
+    left: -32%;
+    bottom: -6%;
+}
+
+.three-pictures-section:nth-of-type(6) .pictures img:nth-of-type(2){
+    width: 115%;
+    right: -30%;
+    bottom: -6%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.products-review:nth-of-type(7){
+    height: 900px;
+    background-color: rgba(245, 175, 185, 1);
+}
+
+
+.products-review:nth-of-type(7) .product-description{
+    height: 700px;
+    background-color: rgba(171, 175, 214, 1);
+}
+
+
+.products-review:nth-of-type(7) .product-description .title h1{
+    white-space: nowrap;
+}
+
+
+
+.products-review:nth-of-type(7) .product-description .title button{
+    width: 300px;
+}
+
+
+
+.products-review:nth-of-type(7) .product-description .image img{
+    position: relative;
+}
+
+
+
+
+
+.products-review:nth-of-type(7) .spread-love{
+    width: 400px;
+    height: 700px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5% 0;
+    margin-left: 5%;
+
+    background-color: rgba(236, 72, 68, 1);
+}
+
+.products-review:nth-of-type(7) .spread-love h1{
+    font-size: 2.3em;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.three-pictures-section:nth-of-type(8){
+    height: 1200px;
+    background-color: rgba(245, 175, 185, 1);
+}
+
+
+.three-pictures-section:nth-of-type(8) .title{
+    height: 350px;
+    position: relative;
+}
+
+
+.three-pictures-section:nth-of-type(8) .title div:first-of-type{
+    width: fit-content;
+
+    position: absolute;
+    top: -80%;
+    right: -30%;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.three-pictures-section:nth-of-type(8) .title div:first-of-type img{
+    width: 250px;
+    animation: 15s infinite spinning-circle linear;
+}
+
+.three-pictures-section:nth-of-type(8) .title div:first-of-type img:last-of-type{
+    width: 180px;
+    background-color: black;
+    border-radius: 50%;
+
+    position: absolute;
+    animation: none;
+}
+
+
+.three-pictures-section:nth-of-type(8) .title h1{
+    white-space: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.wild-recipes{
+    height: 1500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(245, 175, 185, 1);
+
+    font-family: "Roboto", sans-serif;
+
+}
+
+
+.wild-recipes > h1{
+    font-size: 5em;
+    margin-left: 45%;
+}
+
+
+
+.wild-recipes > p{
+    width: 35%;
+
+    margin-bottom: 12%;
+    margin-left: 45%;
+}
+
+
+
+.wild-recipes .recipes-viewport{
+    width: 100%;
+
+    overflow: hidden;
+}
+
+
+.wild-recipes .recipes-viewport .recipes-slider{
+    display: flex;
+    align-items: center;
+
+    cursor: grab;
+
+    /* transform: translate(-166.66%); */
+
+}
+
+
+
+@keyframes slider{
+    0%{
+        transform: translate(0%);
+    }
+    100%{
+        transform: translate(-166.6%);
+    }
+}
+
+
+
+
+
+.wild-recipes .recipes-viewport .recipes-slider .card{
+    min-width: 33.33vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+
+.wild-recipes .recipes-viewport .recipes-slider .card img{
+    width: 100%;
+}
+
+
+
+.wild-recipes .recipes-viewport .recipes-slider .card:nth-of-type(1) img, .wild-recipes .recipes-viewport .recipes-slider .card:nth-of-type(6) img{
+    height: 33.33vw;
+}
+
+
+
+.wild-recipes .recipes-viewport .recipes-slider .card:nth-of-type(2) img, .wild-recipes .recipes-viewport .recipes-slider .card:nth-of-type(7) img{
+    height: 33.33vw;
+}
+
+
+
+.wild-recipes .recipes-viewport .recipes-slider .card:nth-of-type(3) img, .wild-recipes .recipes-viewport .recipes-slider .card:nth-of-type(8) img{
+    height: 33.33vw;
+}
+
+
+
+.wild-recipes .recipes-viewport .recipes-slider .card p{
+    font-size: 1em;
+    margin: 5% 0;
+}
+
+
+
+.wild-recipes .recipes-viewport .recipes-slider .card h1{
+    width: 75%;
+    font-size: 2.5em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer{
+    height: 1400px;
+    background-color: rgba(190, 90, 75, 1);
+
+    padding-top: 10%;
+    padding-bottom: 5%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+
+    font-family: "Roboto", sans-serif;
+}
+
+
+.footer img{
+    width: 150px;
+}
+
+
+
+.footer .content{
+    width: 73%;
+    height: 600px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.footer .content .socials{
+    width: 40%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.footer .content .socials > h1{
+    font-size: 5em;
+}
+
+
+
+.footer .content .socials input{
+    background: none;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 10px 0;
+    margin-top: -20%;
+
+    font-size: 1em;
+}
+
+.footer .content .socials input::placeholder{
+    color: black;
+}
+
+
+
+.footer .content .socials > div{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer .content .socials > div h1{
+    width: 100%;
+    font-size: 2.1em;
+    font-weight: 300;
+}
+
+
+
+.footer .content .socials > div:first-of-type img{
+    width: 25px;
+}
+
+.footer .content .socials > div:last-of-type img{
+    width: 50px;
+}
+
+.footer .content .socials > div:last-of-type p:first-of-type{
+    width: 100%;
+}
+
+
+
+.footer .content .links{
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+}
+
+
+.footer .content .links > div{
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer .content .links > div > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.footer .content .links > div > div h1{
+    margin-bottom: 15px;
+}
+
+
+
+.footer .content .links > div > div a{
+    width: fit-content;
+    margin: 10px 0;
+    color: black;
+    position: relative;
+}
+
+
+.footer .content .links > div > div a::after{
+    content: " ";
+    width: 0%;
+    height: 3px;
+
+    background-color: black;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    transition: 0.2s;
+}
+
+
+.footer .content .links > div > div a:hover:after{
+    width: 100%;
+}
+
+
+
+.footer .content .links > div > div p{
+    margin: 2px 0;
+}
+
+
+
+
+.footer .slider{
+    min-width: 300%;
+    height: 100px;
+
+    background: none;
+
+    display: flex;
+    justify-content: space-around;
+
+    animation: linear footer-slider infinite 10s;
+}
+
+
+@keyframes footer-slider{
+    0%{
+        transform: translateX(33.3%);
+    }
+    100%{
+        transform: translateX(-33.33%);
+    }
+}
+
+
+
+.footer .slider img{
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 576px) {
+
+    button{
+        height: 45px!important;
+    }
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    .top{
+        height: 35px;
+        font-size: 0.8em;
+    }
+
+
+
+
+
+    .main .header{
+        padding: 5%;
+    }
+
+    .main .header #burger-menu{
+        width: 30px;
+        display: block;
+    }
+
+    .main .header > div{
+        display: none;
+    }
+
+
+    .main .header .logo{
+        width: 25%;
+        top: 20%;
+        left: 37.5%;
+    }
+
+
+
+
+
+    .main .content{
+        height: 100vh;
+        background-size: cover;
+    }
+
+    .main .content h1{
+        font-size: 3em;
+        margin-bottom: 75%;
+    }
+
+
+
+
+
+
+
+
+
+
+    .carousel-section .title{
+        height: 300px;
+        padding: 0 5%;
+    }
+
+    .carousel-section .title div:first-of-type{
+        position: absolute;
+        top: -20%;
+        right: 15%;
+        font-size: 0.9em;
+    }
+
+    .carousel-section .title div:first-of-type img{
+        width: 150px;
+    }
+
+    .carousel-section .title div:last-of-type{
+        width: 100%;
+        margin-top: 20%;
+    }
+
+    .carousel-section .title div:last-of-type h1{
+        font-size: 3em;
+    }
+
+    .carousel-section .title div:last-of-type p{
+        width: 100%;
+    }
+
+
+
+    .carousel-section .carousel{
+        height: 450px;
+    }
+
+    .carousel-section .carousel .background-circle{
+        height: 85%!important;
+    }
+
+    .carousel-section .carousel .card{
+        min-width: 250px;
+        height: 410px;
+        align-self: flex-start!important;
+        padding: 0 20px;
+    }
+
+    .carousel-section .carousel .card .background-circle img{
+        width: 200px;
+    }
+
+    .carousel-section .carousel .card h1{
+        font-size: 1.3em;
+        margin-top: -50px;
+    }
+
+    .carousel-section .carousel .card p{
+        font-size: 1em;
+        z-index: 8;
+    }
+
+    .carousel-section .carousel .card div:last-of-type{
+        width: 150px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .three-pictures-section{
+        height: 900px;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 3%;
+        overflow: hidden;
+    }
+
+    .three-pictures-section .title{
+        width: 100%;
+        height: 200px;
+        z-index: 20;
+    }
+
+    .three-pictures-section .title h1{
+        font-size: 2.5em;
+    }
+
+    .three-pictures-section .title p{
+        font-size: 1em;
+    }
+
+    .three-pictures-section .title button{
+        width: 200px;
+    }
+
+
+
+    .three-pictures-section .pictures{
+        width: 100%;
+        height: 450px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .products-review{
+        flex-direction: column;
+    }
+
+    .products-review .product-description{
+        width: 100%;
+        height: 800px;
+        border-radius: 0 150px 0 0;
+
+        flex-direction: column;
+        flex-wrap: nowrap;
+
+        padding: 15% 3%;
+        padding-bottom: 0;
+
+    }
+
+    .products-review .product-description > h1{
+        font-size: 2.5em;
+        order: 1;
+    }
+
+    .products-review .product-description .title{
+        order: 3;
+        width: 100%;
+        height: 200px;
+        margin-top: 10%;
+    }
+
+    .products-review .product-description .title h1{
+        font-size: 1.9em;
+    }
+
+    .products-review .product-description .title > p{
+        font-size: 1em;
+        margin-top: -5%;
+    }
+
+    .products-review .product-description .title h4{
+        font-size: 1.1em;
+    }
+
+    .products-review .product-description .title button{
+        width: 150px;
+    }
+
+
+
+    .products-review .product-description .image{
+        order: 2;
+    }
+
+    .products-review .product-description .image img:first-of-type{
+        width: 320px;
+    }
+
+    .products-review .product-description .image img:last-of-type{
+        width: 70px;
+    }
+
+
+
+
+
+    .products-review .products{
+        width: 100%;
+        height: 600px;
+
+        margin: 0;
+        padding: 0 3%;
+        padding-top: 10%;
+    }
+
+    .products-review .products p{
+        width: 220px;
+
+        font-size: 0.8em;
+        letter-spacing: 0.2em;
+        line-height: 2em;
+    }
+
+    .products-review .products .products-list{
+        padding: 0;
+    }
+
+    .products-review .products .products-list > div h2{
+        font-size: 1.7em;
+        margin-bottom: 5%;
+    }
+
+    .products-review .products .products-list > div hr{
+        height: 1px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .slider{
+        height: 900px;
+    }
+
+    .slider h1{
+        top: 7%;
+        font-size: 1.9em;
+    }
+
+    .slider > div{
+        height: 600px;
+
+        flex-direction: column;
+
+        margin-top: 20%;
+    }
+
+    .slider .dots{
+        flex-direction: row;
+
+        bottom: -30%;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .three-pictures-section:nth-of-type(6){
+        height: 900px;
+        padding-bottom: 20%;
+    }
+
+    .three-pictures-section:nth-of-type(6) .title{
+        height: 230px;
+    }
+
+    .three-pictures-section:nth-of-type(6) .title div:first-of-type{
+        display: none;
+    }
+
+    .three-pictures-section:nth-of-type(6) .title h1{
+        font-size: 2.3em;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .products-review:nth-of-type(7){
+        height: 1250px;
+    }
+
+
+    .products-review:nth-of-type(7) .product-description .image img{
+        width: 300px;
+        top: 0;
+        right: 0;
+    }
+
+    .products-review:nth-of-type(7) .product-description .title button{
+        width: 200px;
+    }
+
+
+
+
+
+    .products-review:nth-of-type(7) .spread-love{
+        width: 90%;
+        height: 450px;
+
+        margin: 0;
+        margin-top: 15%;
+        padding: 13% 0;
+    }
+
+    .products-review:nth-of-type(7) .spread-love img{
+        width: 90px;
+    }
+
+
+    .products-review:nth-of-type(7) .spread-love h1{
+        font-size: 2em;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .three-pictures-section:nth-of-type(8){
+        height: 800px;
+    }
+
+
+    .three-pictures-section:nth-of-type(8) .title{
+        height: 200px;
+    }
+
+
+    .three-pictures-section:nth-of-type(8) .title h1{
+        font-size: 2.2em;
+        margin-bottom: -5%;
+    }
+
+
+
+    .three-pictures-section:nth-of-type(8) .title div:first-of-type{
+        display: none;
+    }
+
+
+
+    .three-pictures-section:nth-of-type(8) .title button{
+        width: 250px;
+    }
+
+
+
+
+
+    .three-pictures-section:nth-of-type(8) .pictures{
+        margin-top: 10%;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .wild-recipes{
+        height: 1000px;
+    }
+
+    .wild-recipes > h1{
+        font-size: 3em;
+        margin-left: 4%;
+        margin-bottom: 10%;
+    }
+
+    .wild-recipes > p{
+        width: fit-content;
+
+        font-size: 1em;
+        line-height: 1.5em;
+
+        margin-left: 4%;
+    }
+
+
+
+    .wild-recipes .recipes-viewport .recipes-slider .card{
+        min-width: 300px;
+    }
+
+    .wild-recipes .recipes-viewport .recipes-slider .card img{
+        width: 260px;
+    }
+
+    .wild-recipes .recipes-viewport .recipes-slider .card:nth-of-type(1) img, .wild-recipes .recipes-viewport .recipes-slider .card:nth-of-type(6) img{
+        height: 260px;
+    }
+    
+    
+    .wild-recipes .recipes-viewport .recipes-slider .card:nth-of-type(2) img, .wild-recipes .recipes-viewport .recipes-slider .card:nth-of-type(7) img{
+        height: 260px;
+
+    }
+    
+    
+    .wild-recipes .recipes-viewport .recipes-slider .card:nth-of-type(3) img, .wild-recipes .recipes-viewport .recipes-slider .card:nth-of-type(8) img{
+        height: 260px;
+
+    }
+
+
+
+    .wild-recipes .recipes-viewport .recipes-slider .card h1{
+        font-size: 0.9em;
+    }
+
+
+
+    .wild-recipes .recipes-viewport .recipes-slider .card h1{
+        font-size: 1.7em;
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .footer{
+        height: 1500px;
+        padding-top: 26%;
+    }
+
+
+    .footer > img{
+        width: 95px;
+    }
+
+
+
+    .footer > .content{
+        width: 94%;
+        height: 1000px;
+        flex-direction: column;
+
+        position: relative;
+    }
+
+
+    .footer > .content > .socials{
+        width: 100%;
+        height: 100%;
+
+        justify-content: space-between;
+    }
+
+
+    .footer > .content > .socials > h1{
+        font-size: 3em;
+    }
+
+
+
+    .footer > .content > .socials > input{
+    }
+
+
+
+    .footer > .content > .socials > div:first-of-type{
+        height: 100px;
+        margin-bottom: 450px;
+    }
+
+
+
+    .footer > .content > .socials > div:first-of-type h1{
+        font-size: 1.9em;
+    }
+
+
+
+    .footer > .content > .socials > div:last-of-type{
+        height: 130px;
+    }
+
+
+
+
+
+    .footer > .content > .links{
+        width: 100%;
+        height: 450px;
+
+        flex-direction: column;
+
+        position: absolute;
+        left: 0;
+        bottom: 150px;
+    }
+
+
+    .footer > .content > .links > div{
+        width: 100%;
+        height: 150px;
+    }
+
+
+
+    .footer > .content > .links > div > div h1{
+        font-size: 1.9em;
+    }
+
+
+
+    .footer > .content > .links > div > div:first-of-type{
+        display: none;
+    }
+
+
+
+
+
+    .footer .slider img{
+        align-items: center;
+        height: 50px;
+    }
+
+
+    .footer .slider img:nth-of-type(2n){
+        width: 50px;
+    }
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+@keyframes running-string{
+    0%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(66.6%);
+    }
+}
