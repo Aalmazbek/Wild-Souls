@@ -975,6 +975,11 @@ button{
 
     /* transform: translate(-166.66%); */
 
+    overflow: auto;
+}
+
+.wild-recipes .recipes-viewport .recipes-slider::-webkit-scrollbar{
+    width: 0;
 }
 
 

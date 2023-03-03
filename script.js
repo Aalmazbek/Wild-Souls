@@ -36,7 +36,9 @@ const $carouselSection = document.querySelector(".carousel-section")
 const $carousel = document.querySelector(".carousel")
 let isDown = false
 let startX
+let startX2
 let scrollLeft
+let scrollLeft2
 
 
 let sliderLoopSetTimeout
@@ -50,7 +52,7 @@ let sliderLoopInterval = setInterval(function(){
 }, 1)
 
 
-let enterVelX = 2
+// let enterVelX = 2
 $carousel.addEventListener('mouseenter', function(){
     // setTimeout(function(){
         clearInterval(sliderLoopInterval)
@@ -58,24 +60,24 @@ $carousel.addEventListener('mouseenter', function(){
     // }, 10)
 })
 
-let leaveVelX = 0.1
-function smoothStop(){
-    $carousel.scrollLeft += enterVelX;
-    enterVelX *= 0.95;
+// let leaveVelX = 0.1
+// function smoothStop(){
+//     $carousel.scrollLeft += enterVelX;
+//     enterVelX *= 0.95;
 
-    if (Math.abs(enterVelX) > 0.1){
-        setTimeout(smoothStop,1)
-    }
-}
+//     if (Math.abs(enterVelX) > 0.1){
+//         setTimeout(smoothStop,1)
+//     }
+// }
 
-function smoothStart(){
-    $carousel.scrollLeft += leaveVelX;   
-    leaveVelX *= 1.01
+// function smoothStart(){
+//     $carousel.scrollLeft += leaveVelX;   
+//     leaveVelX *= 1.01
 
-    if (Math.abs(leaveVelX) < 2) {
-        setTimeout(smoothStart,1)
-    }
-}
+//     if (Math.abs(leaveVelX) < 2) {
+//         setTimeout(smoothStart,1)
+//     }
+// }
 
 
 
@@ -87,7 +89,6 @@ $carousel.addEventListener("mousedown", e => {
     console.log(e.pageX);
     scrollLeft = $carousel.scrollLeft
     cancelMomentumTracking();
-    
 })
 
 
@@ -100,6 +101,7 @@ $carousel.addEventListener("mouseleave", () => {
             top: 0,
             left: $carousel.scrollLeft += 1,
         })
+
     }, 1)
 
     // smoothStart()
@@ -118,7 +120,9 @@ $carousel.addEventListener("mousemove", e => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - $carousel.offsetLeft;
+
     walk = (x - startX) * 1
+
 
     var prevScrollLeft = $carousel.scrollLeft;
     $carousel.scrollLeft = scrollLeft - walk;
@@ -151,9 +155,12 @@ function momentumLoop(){
     if (velX > 30) {
         velX = 30
     }
+   
+
     if (Math.abs(velX) > 0.8){
         momentumID = requestAnimationFrame(momentumLoop);
     }
+    
 }
 
 
@@ -213,9 +220,9 @@ function setScrollPos(pos) {
 
 function scrollUpdate(pos) {
     scrollPos = getScrollPos()
-    if (scrollPos + $carouselSection.offsetWidth + 1 >= sliderWidth) {
+    if (scrollPos + $carouselSection.offsetWidth + 5 >= sliderWidth) {
         $carousel.scrollTo({left: sliderWidth/2 - $carouselSection.offsetWidth })
-    }   else if(scrollPos - 10 <= 0){
+    }   else if(scrollPos - 1 <= 0){
         $carousel.scrollTo({left: sliderWidth/2})
     }
     requestAnimationFrame(scrollUpdate)
@@ -371,6 +378,47 @@ items2.forEach(item => {
 })
 
 
+function getClonesWidth2() {
+    let width = 0
+    clones2.forEach(item => {
+        width += item.offsetWidth
+    })
+    return width
+}
+
+
+function getScrollPos2() {
+    // console.log($recipesSlider.scrollLeft);
+    return $recipesSlider.scrollLeft
+}
+
+
+function setScrollPos2(pos) {
+    $recipesSlider.scrollTo({left: pos})
+}
+
+
+function scrollUpdate2(pos) {
+    scrollPos2 = getScrollPos2()
+    if (Math.ceil(scrollPos2) + $recipesSlider.offsetWidth + 2 >= sliderWidth2) {
+        $recipesSlider.scrollTo({left: sliderWidth2/2 - $recipesSlider.offsetWidth })
+    }   else if(scrollPos2 - 10 <= 0){
+        $recipesSlider.scrollTo({left: sliderWidth2/2})
+    }
+    requestAnimationFrame(scrollUpdate2)
+}
+
+
+function onLoad2() {
+    sliderWidth2 = $recipesSlider.scrollWidth
+    // console.log(sliderWidth);
+    // console.log($recipesSlider.offsetWidth);
+    clonesWidth2 = getClonesWidth2()
+    scrollUpdate2()
+}
+
+
+onLoad2()
 
 
 
@@ -379,121 +427,105 @@ items2.forEach(item => {
 
 
 
-let isDown2 = false
-let recipeStartX
-let translateX
+let sliderLoopInterval2 = setInterval(function(){
 
-let timer
-let interval2
+    $recipesSlider.scrollTo({
+        top: 0,
+        left: $recipesSlider.scrollLeft += 1,
+    })
+}, 1)
 
 
-// $recipesViewport.addEventListener('mouseenter', function(){
-//     let startX = recipeStyles.transform.substring(19)
-//     startX = startX.split('')
-//     startX.splice(-4)
-//     recipeStartX = startX.join('')*100/$recipesSlider.offsetWidth
+
+$recipesSlider.addEventListener('mouseenter', function(){
+    // setTimeout(function(){
+        clearInterval(sliderLoopInterval2)
+        // smoothStop()
+    // }, 10)
+})
+
+
+
+$recipesSlider.addEventListener("mousedown", e => {
+    isDown = true
+    startX2 = e.pageX - $recipesSlider.offsetLeft
+    console.log(e.pageX);
+    scrollLeft2 = $recipesSlider.scrollLeft
+    cancelMomentumTracking2();
+})
+
+
+
+$recipesSlider.addEventListener("mouseleave", () => {
+    isDown = false
+
+
+    sliderLoopInterval2 = setInterval(function(){
+
+        $recipesSlider.scrollTo({
+            top: 0,
+            left: $recipesSlider.scrollLeft += 1,
+        })
+    }, 1)
+
+    // smoothStart()
+})
+
+$recipesSlider.addEventListener("mouseup", () => {
+    isDown = false
+    console.log(walk2);
+    console.log($recipesSlider.scrollLeft);
+
+    if (velX2 > 30) {
+        velX2 = 30
+    }
+    beginMomentumTracking2();
+})
+
+let walk2
+
+$recipesSlider.addEventListener("mousemove", e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - $recipesSlider.offsetLeft;
+
+    walk2 = (x - startX2) * 1
+
+
+    var prevScrollLeft = $recipesSlider.scrollLeft;
+    $recipesSlider.scrollLeft = scrollLeft2 - walk2;
+    velX2 = $recipesSlider.scrollLeft - prevScrollLeft;
+})
+
+
+
+
+
+var velX2 = 0;
+var momentumID2;
+
+$recipesSlider.addEventListener('wheel', (e) => {
+    cancelMomentumTracking2();
+});  
+
+function beginMomentumTracking2(){
+    cancelMomentumTracking2();
+    momentumID2 = requestAnimationFrame(momentumLoop2);
+}
+function cancelMomentumTracking2(){
+    cancelAnimationFrame(momentumID2);
+}
+function momentumLoop2(){
+    $recipesSlider.scrollLeft += velX2;
+    velX2 *= 0.93;
     
-//     clearTimeout(timer)
+    // if (velX2 > 30) {
+    //     velX2 = 30
+    // }
+   
 
-//     timer = setTimeout(function(){
-//         console.log("NO");
-//         let switcher = 0
-//         animationSwitch(switcher)
-//     },1)
+    if (Math.abs(velX2) > 0.8){
+        momentumID2 = requestAnimationFrame(momentumLoop2);
+    }
     
-// })
-
-
-// $recipesViewport.addEventListener('mouseover', function(){
-
-//     let startX = recipeStyles.transform.substring(19)
-//     startX = startX.split('')
-//     startX.splice(-4)
-//     recipeStartX = startX.join('')*100/$recipesSlider.offsetWidth
-
-//     // console.log(translate.join(''));
-//     console.log(recipeStartX);
-
-// })
-
-// $recipesViewport.addEventListener('mouseleave', function(){
-
-//     clearTimeout(timer)
-
-//     timer = setTimeout(function(){
-//         console.log("YES");
-//         let switcher = 1
-//         animationSwitch(switcher)
-//     },1)
-
-//     console.log('leave');
-// })
-
-
-// function animationSwitch(switcher  ){
-//     if (switcher) {
-//         $recipesSlider.style.transition = '1s cubic-bezier(.58,-0.01,.5,.5)'
-//         $recipesSlider.style.transform = `translateX(${recipeStartX-10}%)`
-//         recipeStartX-=5
-//         runAnimation()
-//     }   else{
-//         clearInterval(interval2)
-//         $recipesSlider.style.transition = '1s cubic-bezier(.29,.5,.49,1)'
-//         $recipesSlider.style.transform = `translateX(${recipeStartX-10}%)`
-//     }
-// }
-
-// function runAnimation() {
-//     $recipesSlider.style.transition = '1s linear'
-//     interval2 = setInterval(function(){
-//         $recipesSlider.style.transform = `translateX(${recipeStartX-0.5}%)`
-//         recipeStartX-=0.5
-//         console.log(recipeStartX);
-//         if (recipeStartX<=-179.5) {
-//             clearInterval(interval2)
-//             recipeStartX = 0
-//             function refresh(){
-//                 $recipesSlider.style.transition = '0s linear'
-//                 $recipesSlider.style.transform = `translateX(${recipeStartX}%)`
-//             }
-//             refresh()
-//             setTimeout(runAnimation, 15)
-//         }
-//     }, 50)
-// }
-
-
-
-
-
-
-
-// $recipesSlider.addEventListener('mousedown', function(){
-//     let startX = recipeStyles.transform.substring(19)
-//     startX = startX.split('')
-//     startX.splice(-4)
-//     recipeStartX = startX.join('')
-//     console.log(recipeStartX);
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let $links = document.querySelectorAll('.footer .content .links > div > div a')
-
-// $links.forEach(el => {
-//     el.addEventListener('mouseover', function(){
-//         el.after.style.width = "100%"
-//     })
-// })
+}
