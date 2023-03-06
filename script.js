@@ -32,6 +32,56 @@ $cross.addEventListener('click', function(){
 
 
 
+let $langBtn = document.querySelector('#lang-btn')
+
+$langBtn.addEventListener('mouseenter', showLangButtons)
+
+function showLangButtons(){
+    $langBtn.firstElementChild.style.color = 'gray'
+    $langBtn.firstElementChild.style.backgroundColor = 'black'
+
+    
+    $langBtn.lastElementChild.style.display = 'flex'
+    $langBtn.lastElementChild.style.backgroundColor = 'black'
+    $langBtn.lastElementChild.style.color = 'white'
+    setTimeout(function(){
+        $langBtn.lastElementChild.style.opacity = '1'
+    }, 50)
+}
+
+
+$langBtn.addEventListener('mouseleave', hideLangButtons)
+
+function hideLangButtons(){
+    $langBtn.firstElementChild.style.color = 'black'
+    $langBtn.firstElementChild.style.background = 'none'
+
+    
+    $langBtn.lastElementChild.style.opacity = '0'
+    setTimeout(function(){
+        $langBtn.lastElementChild.style.display = 'none'
+    }, 50)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const $carouselSection = document.querySelector(".carousel-section")
 const $carousel = document.querySelector(".carousel")
 let isDown = false
@@ -255,53 +305,6 @@ onLoad()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//// HOVER ЭФФЕКТЫ / HOVER EFFECTS
-let $productListDivs = document.querySelectorAll('.products-review .products .products-list > div')
-
-$productListDivs.forEach(el => {
-    el.addEventListener('mouseover', function(){
-        el.style.color = "white"
-        el.firstElementChild.style.transform = "translate(10%)"
-        el.lastElementChild.style.width = "100%"
-        el.lastElementChild.style.alignSelf = "flex-start"
-        // console.log(el.firstChild);
-    })
-    el.addEventListener('mouseout', function(){
-        el.style.color = "black"
-        el.firstElementChild.style.transform = "translate(0)"
-        el.lastElementChild.style.width = "0"
-        el.lastElementChild.style.alignSelf = "flex-end"
-    })
-})
-
-
-
-let $headerLinks = document.querySelectorAll('.header-link')
-
-$headerLinks.forEach(elem => {
-    elem.addEventListener('mouseover', function(){
-        console.log("YES");
-        elem.lastElementChild.style.width = "100%"
-        elem.lastElementChild.style.alignSelf = "flex-start"
-        // console.log(el.firstChild);
-    })
-    elem.addEventListener('mouseout', function(){
-        elem.lastElementChild.style.width = "0"
-        elem.lastElementChild.style.alignSelf = "flex-end"
-    })
-})
 
 
 
@@ -867,7 +870,10 @@ function addEventListenerToCartItems() {
         elem.addEventListener('click', e => {
             console.log(index);
             if (e.target == $deleteCartItemButton[index] || e.target == $deleteCartItemButton[index].firstElementChild) {
-                console.log("YES1");
+                // console.log("YES1");
+                elem.style.transition = "0.5s"
+                elem.style.opacity = "0"
+                elem.style.transform = "translateX(-150%)"
                 // let index = productsArrayForHTML.findIndex(item => item.name == elem.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.textContent)
                 // console.log(productsArrayForHTML.length);
                 deleteCartItem(Math.abs(index - (productsArrayForHTML.length - 1)))
@@ -989,3 +995,85 @@ function refreshTotalPrice() {
 }
 
 refreshTotalPrice()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//// HOVER ЭФФЕКТЫ / HOVER EFFECTS
+let $productListDivs = document.querySelectorAll('.products-review .products .products-list > div')
+
+$productListDivs.forEach(el => {
+    el.addEventListener('mouseover', function(){
+        el.style.color = "white"
+        el.firstElementChild.style.transform = "translate(10%)"
+        el.lastElementChild.style.width = "100%"
+        el.lastElementChild.style.alignSelf = "flex-start"
+        // console.log(el.firstChild);
+    })
+    el.addEventListener('mouseout', function(){
+        el.style.color = "black"
+        el.firstElementChild.style.transform = "translate(0)"
+        el.lastElementChild.style.width = "0"
+        el.lastElementChild.style.alignSelf = "flex-end"
+    })
+})
+
+
+
+let $headerLinks = document.querySelectorAll('.header-link')
+
+$headerLinks.forEach(elem => {
+    elem.addEventListener('mouseover', function(){
+        console.log("YES");
+        elem.lastElementChild.style.width = "100%"
+        elem.lastElementChild.style.alignSelf = "flex-start"
+        // console.log(el.firstChild);
+    })
+    elem.addEventListener('mouseout', function(){
+        elem.lastElementChild.style.width = "0"
+        elem.lastElementChild.style.alignSelf = "flex-end"
+    })
+})
+
+
+let $carouselCards = document.querySelectorAll('.carousel .card')
+let $backgroundCircle = document.querySelectorAll('.background-circle')
+
+$carouselCards.forEach((elem, index) => {
+    elem.addEventListener('mouseenter', function(){
+        $backgroundCircle[index].lastElementChild.style.opacity = '1'
+        $buyBtn[index].firstElementChild.style.WebkitAnimationName = 'running-string'
+    })
+    
+    elem.addEventListener('mouseleave', function(){
+        $backgroundCircle[index].lastElementChild.style.opacity = '0'
+        $buyBtn[index].firstElementChild.style.WebkitAnimationName = 'none'
+    })
+})
+
+
