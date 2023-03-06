@@ -86,7 +86,7 @@ $carousel.addEventListener('mouseenter', function(){
 $carousel.addEventListener("mousedown", e => {
     isDown = true
     startX = e.pageX - $carousel.offsetLeft
-    console.log(e.pageX);
+    // console.log(e.pageX);
     scrollLeft = $carousel.scrollLeft
     cancelMomentumTracking();
 })
@@ -109,8 +109,6 @@ $carousel.addEventListener("mouseleave", () => {
 
 $carousel.addEventListener("mouseup", () => {
     isDown = false
-    console.log(walk);
-    console.log($carousel.scrollLeft);
     beginMomentumTracking();
 })
 
@@ -269,7 +267,7 @@ onLoad()
 
 
 
-
+//// HOVER ЭФФЕКТЫ / HOVER EFFECTS
 let $productListDivs = document.querySelectorAll('.products-review .products .products-list > div')
 
 $productListDivs.forEach(el => {
@@ -287,6 +285,42 @@ $productListDivs.forEach(el => {
         el.lastElementChild.style.alignSelf = "flex-end"
     })
 })
+
+
+
+let $headerLinks = document.querySelectorAll('.header-link')
+
+$headerLinks.forEach(elem => {
+    elem.addEventListener('mouseover', function(){
+        console.log("YES");
+        elem.lastElementChild.style.width = "100%"
+        elem.lastElementChild.style.alignSelf = "flex-start"
+        // console.log(el.firstChild);
+    })
+    elem.addEventListener('mouseout', function(){
+        elem.lastElementChild.style.width = "0"
+        elem.lastElementChild.style.alignSelf = "flex-end"
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -529,3 +563,429 @@ function momentumLoop2(){
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///// ЛОГИН / LOGIN
+
+let $closeLoginButton = document.querySelector("#close-login-modal-button")
+let $loginButton = document.querySelector(".login-button")
+let $loginModal = document.querySelector(".login-modal")
+
+$loginButton.addEventListener('click', showLoginModal)
+
+let isLoginModalUp = 0
+
+function showLoginModal() {
+    $loginModal.style.transform = 'translateY(0%)'
+    $body.style.overflowY = 'hidden'
+
+    setTimeout(function(){
+        isLoginModalUp = 1
+    }, 500)
+}
+
+$closeLoginButton.addEventListener('click', hideLoginModal)
+
+document.addEventListener('click', function(e){
+    const withinBoundaries = e.composedPath().includes($loginModal);
+    if (isLoginModalUp && !withinBoundaries) {
+        hideLoginModal()
+    }
+})
+
+function hideLoginModal() {
+    $loginModal.style.transform = 'translateY(-200%)'
+    $body.style.overflowY = 'auto'
+
+    isLoginModalUp = 0
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//// КОРЗИНА / CART
+
+let $buyBtn = document.querySelectorAll('.buy-button')
+let $cartCounter = document.querySelector('#counter')
+let $cartList = document.querySelector('.cart-list')
+let counter = 0
+let cart = []
+let productIndex
+
+let productsArray = [
+    {
+        img: "https://static.wildsouls.gr/app/uploads/2020/10/fistikovoutiro-1-800x880.png",
+        name: "The Wild Peanut Butter",
+        price: "4.90"
+    },
+    {
+        img: "https://static.wildsouls.gr/app/uploads/2020/10/taxini_kakoa_meli-800x880.png",
+        name: "Tahini with Cocoa & Honey",
+        price: "5.90"
+    },
+    {
+        img: "https://static.wildsouls.gr/app/uploads/2020/10/fountoukovoutiro-800x880.png",
+        name: "Hazelnut Butter",
+        price: "6.90"
+    },
+    {
+        img: "https://static.wildsouls.gr/app/uploads/2020/10/taxini_sisami-800x880.png",
+        name: "Tahini",
+        price: "4.90"
+    },
+    {
+        img: "https://static.wildsouls.gr/app/uploads/2020/10/kasious-800x880.png",
+        name: "Cashew Butter",
+        price: "6.90"
+    },
+    {
+        img: "https://static.wildsouls.gr/app/uploads/2020/10/taxini_meli-800x880.png",
+        name: "Tahini with Honey",
+        price: "5.90"
+    },
+    {
+        img: "https://static.wildsouls.gr/app/uploads/2020/10/taxini_futikes-ines-800x880.png",
+        name: "High Fiber Tahini",
+        price: "5.90"
+    },
+    {
+        img: "https://static.wildsouls.gr/app/uploads/2020/10/amigdalovoutiro-800x880.png",
+        name: "Almond Butter",
+        price: "7.20"
+    },
+    {
+        img: "https://static.wildsouls.gr/app/uploads/2020/10/taxini_protein-800x880.png",
+        name: "High Protein Tahini",
+        price: "6.40"
+    },
+    {
+        img: "https://static.wildsouls.gr/app/uploads/2020/10/taxini_chia-800x880.png",
+        name: "Tahini with Chia Seeds",
+        price: "5.90"
+    },
+]
+
+
+
+
+
+
+$buyBtn.forEach((elem, index) => {
+    let elemCounter = 1
+    elem.addEventListener('click', function addInCart(){
+        // console.log(elemCounter);
+
+        $cartCounter.innerHTML = `(${counter})`
+        
+        productIndex = index < 10 ? index : index - 10
+        console.log(productsArray[productIndex].name)
+
+
+        // if (productsArrayForHTML.length > 0) {
+        //     productsArrayForHTML.forEach(elem => {
+        //         if (elem.name != productsArray[productIndex].name) {
+        //             console.log("YES");
+        //             productsArrayForHTML.push({
+        //                 amount: elemCounter,
+        //                 img: productsArray[productIndex].img,
+        //                 name: productsArray[productIndex].name,
+        //                 price: productsArray[productIndex].price,
+        //             })
+        //         }   else{            
+        //             let elemIndexInProductsArrayForHTML = productsArrayForHTML.findIndex(item => item.name == productsArray[productIndex].name)
+        //             console.log(elemIndexInProductsArrayForHTML);
+        //             productsArrayForHTML[elemIndexInProductsArrayForHTML].amount += 1
+        //         }
+        //     })
+        // }   else{
+            // productsArrayForHTML.push({
+            //     amount: elemCounter,
+            //     img: productsArray[productIndex].img,
+            //     name: productsArray[productIndex].name,
+            //     price: productsArray[productIndex].price,
+            // })
+        // }
+
+
+
+        productsArrayForHTML.push({
+            amount: elemCounter,
+            img: productsArray[productIndex].img,
+            name: productsArray[productIndex].name,
+            price: productsArray[productIndex].price,
+        })
+
+
+        let dublicates = productsArrayForHTML.filter((elem, index, arr) => arr.findIndex(item => item.name == elem.name) !== index)        
+        let originals = productsArrayForHTML.filter((elem, index, arr) => arr.findIndex(item => item.name == elem.name) === index)        
+
+        // console.log(dublicates);
+        // console.log(originals);
+
+        originals.forEach((elem1, index1, arr1) => {
+            dublicates.forEach((elem2,index2,arr2) => {
+                if(elem1.name == elem2.name){
+                    elem1.amount += 1
+                }
+            })
+        })
+
+
+
+
+
+        localStorage.setItem('cartItems', JSON.stringify(originals))
+
+
+        refreshCartList()
+        refreshCartCounter()
+        refreshTotalPrice()
+        setTimeout(showCartModal, 500)
+    
+        // if (elemCounter = 0) {
+            // $cartList.insertAdjacentHTML('afterbegin', `
+            //     <div class="cart-product">
+            //         <div>
+            //             <p>${elemCounter}</p>
+            //             <h1>${productsArray[productIndex].name}</h1>
+            //             <h2>${productsArray[productIndex].price}</h2>
+            //         </div>
+        
+            //         <img src="${productsArray[productIndex].img}">
+        
+            //         <button id="delete-cart-product">
+            //             <img src="./img/cross.svg">
+            //         </button>
+            //     </div>
+            // `)
+        // }
+    })
+})
+
+
+
+let productsArrayForHTML
+
+function refreshCartList(){
+    if (JSON.parse(localStorage.getItem('cartItems')) != undefined) {
+        productsArrayForHTML = JSON.parse(localStorage.getItem('cartItems'))
+    }   else{
+        productsArrayForHTML = []
+    }
+    
+    $cartList.innerHTML = ""
+    productsArrayForHTML.forEach(elem => {
+        $cartList.insertAdjacentHTML('afterbegin', `
+                <div class="cart-item">
+                    <div>
+                        <div>
+                            <p>${elem.amount}X</p>
+                            <h1>${elem.name}</h1>
+                            <h2>${elem.price}</h2>
+                        </div>
+                        <img src="${elem.img}">
+                    </div>
+        
+        
+                    <button class="delete-cart-item">
+                        <img src="./img/cross.svg">
+                    </button>
+                </div>
+            `)
+    })
+
+    addEventListenerToCartItems()
+
+    
+}
+
+refreshCartList()
+
+
+
+
+
+function addEventListenerToCartItems() {
+    let $cartItem = document.querySelectorAll('.cart-item')
+    let $deleteCartItemButton = document.querySelectorAll('.delete-cart-item')
+
+    $cartItem.forEach((elem, index) => {
+        elem.addEventListener('click', e => {
+            console.log(index);
+            if (e.target == $deleteCartItemButton[index] || e.target == $deleteCartItemButton[index].firstElementChild) {
+                console.log("YES1");
+                // let index = productsArrayForHTML.findIndex(item => item.name == elem.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.textContent)
+                // console.log(productsArrayForHTML.length);
+                deleteCartItem(Math.abs(index - (productsArrayForHTML.length - 1)))
+            }
+        })
+
+        elem.firstElementChild.style.transition = "0.3s"
+
+        elem.firstElementChild.addEventListener('mouseenter', function(){
+            elem.firstElementChild.style.color = 'white'
+        })
+
+        elem.firstElementChild.addEventListener('mouseleave', function(){
+            elem.firstElementChild.style.color = 'black'
+        })
+    })
+
+    $deleteCartItemButton.forEach(elem => {
+        elem.style.transition = "0.3s"
+        elem.addEventListener('mouseenter', function(){
+            elem.style.filter = 'brightness(0) invert(1)'
+        })
+
+        elem.addEventListener('mouseleave', function(){
+            elem.style.filter = 'brightness(0) invert(0)'
+        })
+    })
+}
+
+addEventListenerToCartItems()
+
+
+function deleteCartItem(index){
+    productsArrayForHTML.splice(index, 1)
+    localStorage.setItem('cartItems', JSON.stringify(productsArrayForHTML))
+    console.log(productsArrayForHTML.length);
+    console.log("YES2");
+    setTimeout(function(){
+        refreshCartList()
+        refreshCartCounter()
+        refreshTotalPrice()
+    }, 500)
+}
+
+
+
+function refreshCartCounter(){
+    counter = 0
+
+    if (productsArrayForHTML.length > 0) {
+        productsArrayForHTML.forEach(elem => {
+            counter += elem.amount
+        })
+    }   else{
+        counter = 0
+    }
+
+    $cartCounter.innerHTML = `(${counter})`
+    
+    // productIndex = index < 10 ? index : index - 10
+    // console.log(productsArray[productIndex].name)
+
+    // $cartList.insertAdjacentHTML('afterbegin', `
+    //     <div class="cart-product">
+    //         <div>
+    //             <h1>${productsArray[productIndex].name}</h1>
+    //         </div>
+
+    //         <img src="${productsArray[productIndex].img}">
+
+    //         <img src="./img/cross.svg">
+    //     </div>
+    // `)
+}
+
+refreshCartCounter()
+
+
+//// Модальное окно корзины / Cart modal window
+
+let $closeCartButton = document.querySelector("#close-cart-modal-button")
+let $cartButton = document.querySelector(".cart-button")
+let $cartModal = document.querySelector(".cart-modal")
+
+$cartButton.addEventListener('click', showCartModal)
+
+function showCartModal() {
+    $cartModal.style.transform = 'translate(0%)'
+    $body.style.overflowY = 'hidden'
+}
+
+$closeCartButton.addEventListener('click', hideCartModal)
+$cartModal.addEventListener('mouseleave', hideCartModal)
+
+function hideCartModal() {
+    $cartModal.style.transform = 'translate(100%)'
+    $body.style.overflowY = 'auto'
+}
+
+
+
+
+
+
+
+
+
+
+let $totalPrice = document.querySelector('#total-price')
+
+function refreshTotalPrice() {
+    let num = 0
+
+    productsArrayForHTML.forEach(elem => {
+        num += elem.price*elem.amount
+    })
+
+    $totalPrice.innerHTML = num.toFixed(2)
+}
+
+refreshTotalPrice()

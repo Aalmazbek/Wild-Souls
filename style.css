@@ -11,6 +11,7 @@
 
 body{
     background-color: rgba(237, 123, 73, 1);
+    overflow-x: hidden;
 }
 
 body::-webkit-scrollbar{
@@ -39,20 +40,23 @@ button{
 
 .top{
     height: 45px;
-
+    
     background-color: black;
     color: white;
-
+    
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: "Roboto", sans-serif;
+    z-index: 10;
 }
 
 
 
 .main{
     height: fit-content;
+
 }
 
 
@@ -116,6 +120,7 @@ button{
 
 
 
+
 .main .header{
     width: 100%;
     height: 100px;
@@ -140,6 +145,29 @@ button{
     gap: 30px;
 }
 
+
+.main .header > div > div{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.main .header > div > div hr{
+    width: 0%;
+    height: 3px;
+    border: none;
+    background-color: black;
+    transition: 0.2s;
+}
+
+
+/* .main .header > div > div hr:last-of-type{
+    width: 0;
+    background-color: white;
+    transition: 0.5s;
+} */
+
 .main .header > div a{
     font-size: 0.9em;
     color: black;
@@ -161,6 +189,331 @@ button{
     border: none;
     background: none;
 }
+
+
+
+
+.main .cart-modal{
+    height: 100%;
+    min-width: 500px;
+    width: 500px;
+    overflow-y: auto;
+
+    background-color: rgba(171, 175, 214, 1);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 110;
+    padding-top: 3%;
+
+    transform: translateX(100%);
+    transition: 0.4s ease-out;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: "Roboto", sans-serif;
+}
+
+.main .cart-modal::-webkit-scrollbar{
+    width: 0;
+}
+
+
+.main .cart-modal > div{
+    width: 100%;
+    padding: 0 8%;
+}
+
+
+
+.main .cart-modal .header{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: static;
+}
+
+
+.main .cart-modal .header h1{
+    font-size: 2.5em;
+}
+
+
+
+.main .cart-modal .header img{
+    width: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main .cart-modal .header img:hover{
+    filter: brightness(0) invert(1);
+}
+
+
+
+
+.main .cart-modal .cart-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.main .cart-modal .cart-list .cart-item{
+    width: 100%;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5%;
+
+
+    border-bottom: 1px solid black;
+}
+
+
+.main .cart-modal .cart-list .cart-item > div{
+    width: 85%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+
+.main .cart-modal .cart-list .cart-item > div > div{
+    width: 100%;
+    height: 100%;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2% 0;
+}
+
+
+.main .cart-modal .cart-list .cart-item > div p{
+    font-size: 1em;
+    font-weight: 300;
+}
+
+
+
+.main .cart-modal .cart-list .cart-item > div h1{
+    font-size: 1.1em;
+    margin:  0;
+}
+
+
+
+.main .cart-modal .cart-list .cart-item > div h2{
+    font-size: 1em;
+    font-weight: 300;
+}
+
+
+
+.main .cart-modal .cart-list .cart-item > div img{
+    height: 70%;
+}
+
+
+
+.main .cart-modal .cart-list .cart-item button{
+    width: 10%;
+    height: 100%;
+    background: none;
+    user-select: none;
+}
+
+
+
+.main .cart-modal .cart-list .cart-item button img{
+    width: 20px;
+    user-select: none;
+}
+
+
+
+.main .cart-modal .total{
+    width: 84%;
+    padding: 4% 0;
+
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.main .cart-modal .total a{
+    font-size: 0.9em;
+    color: black;
+    text-decoration: underline;
+}
+
+
+
+.main .cart-modal button{
+    width: 70%;
+    Min-height: 60px;
+    height: 60px;
+
+    border-radius: 40px;
+
+    margin: 5% 0;
+
+    color: white;
+    background-color: black;
+}
+
+
+
+
+
+
+.login-modal{
+    width: 500px;
+    height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+
+    position: absolute;
+    top: 20%;
+    right: 10%;
+
+    transition: 0.3s;
+
+    transform: translateY(-200%);
+
+    background-color: #fceeea;
+
+    font-family: "Roboto", sans-serif;
+}
+
+.login-modal > div{
+    width: 100%;
+}
+
+
+
+.login-modal .login-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-modal .login-header img{
+    width: 15px;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+.login-modal .login-header img:hover{
+    filter: brightness(0) invert(1);
+}
+
+
+
+
+.login-modal .login-socials{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 20px 0;
+}
+
+.login-modal .login-socials img{
+    width: 80px;
+
+    cursor: pointer;
+
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.0);
+
+    border-radius: 80px;
+
+    transition: 0.3s;
+}
+
+.login-modal .login-socials img:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.login-modal .login-separator{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-modal .login-separator hr{
+    width: 100%;
+}
+
+
+
+.login-modal .login-separator h1{
+    width: fit-content;
+    padding: 0 50px;
+    position: absolute;
+    background-color: #fceeea;
+}
+
+
+
+
+.login-modal .login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-modal .login-form input{
+    width: 100%;
+    height: 50px;
+
+    margin: 1% 0;
+    padding: 0 10px;
+
+    background-color: #f9dcd4;
+
+    border: none;
+    border-radius: 5px;
+}
+
+.login-modal .login-form input:last-of-type{
+    width: 300px;
+
+    margin: 2% 0;
+
+    cursor: pointer;
+
+    color: white;
+    background-color: black;
+
+    border-radius: 50px;
+}
+
+
 
 
 
@@ -306,7 +659,7 @@ button{
     align-items: center;
     justify-content: center;
     border-radius: 275px;
-
+    user-select: none;
 }
 
 .carousel-section .carousel .card .background-circle img{
@@ -348,6 +701,8 @@ button{
     border-radius: 50px;
 
     align-self: flex-start;
+
+    user-select: none;
 }
 
 .carousel-section .carousel .card div:last-of-type p{
@@ -1268,6 +1623,55 @@ button{
 
 
 
+
+
+
+
+@media (max-width: 1450px) {
+
+    .products-review .product-description{
+        padding-left: 7%;
+    }
+
+
+    .products-review .product-description .image{
+        width: 50%;
+    }
+
+    .products-review .product-description .image img:first-of-type{
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 576px) {
 
     button{
@@ -1929,6 +2333,11 @@ button{
 
 
 }
+
+
+
+
+
 
 
 

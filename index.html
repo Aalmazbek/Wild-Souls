@@ -32,27 +32,95 @@
                 <a href="#">LOG IN</a>
             </div>
         </div>
+
         <div class="header">
             <img id="burger-menu" src="./img/burger-menu.svg" alt="">
             <div class="left">
-                <a href="#">PRODUCTS</a>
-                <a href="#">WHO WE ARE</a>
-                <a href="#">CONCEPT STORE</a>
+                <div class="header-link">
+                    <a href="#">PRODUCTS</a>
+                    <hr>
+                </div>
+
+                <div class="header-link">
+                    <a href="./en.html">WHO WE ARE</a>
+                    <hr>
+                </div>
+
+                <div class="header-link">
+                    <a href="#">CONCEPT STORE</a>
+                    <hr>
+                </div>
             </div>
+
             <img class="logo" src="./img/logo.svg" alt="">
+
             <div class="middle">
-                <a href="#">RECIPES</a>
-                <a href="#">LOG IN</a>
-                <a href="#">CART (0)</a>
+                <div class="header-link">
+                    <a href="#">RECIPES</a>
+                    <hr>
+                </div>
+
+                <div class="login-button header-link">
+                    <a href="#">LOG IN</a>
+                    <hr>
+                </div>
+
+                <div class="cart-button header-link">
+                    <a href="#">CART <span id="counter">(0)</span></a>
+                    <hr>
+                </div>
             </div>
             <button id="lang-btn">EN</button>
         </div>
+
+        <div class="cart-modal">
+            <div class="header">
+                <h1>Your Cart</h1>
+                <img id="close-cart-modal-button" src="./img/cross.svg" alt="">
+            </div>
+
+            <div class="cart-list"></div>
+
+            <div class="total">
+                <h2>Total: €<span id="total-price">0</span></h2>
+                <a href="#">VIEW CART</a>
+            </div>
+
+            <button>CHECKOUT</button>
+        </div>
+
+        <div class="login-modal">
+            <div class="login-header">
+                <h1>Login with</h1>
+                
+                <img id="close-login-modal-button" src="./img/cross.svg" alt="">
+            </div>
+
+            <div class="login-socials">
+                <img src="./img/google.svg" alt="">
+            </div>
+
+            <div class="login-separator">
+                <hr>
+                <h1>or</h1>
+            </div>
+
+            <div class="login-form">
+                <input type="email" placeholder="email" name="" id="">
+                <input type="password" placeholder="password" name="" id="">
+                <input type="submit" value="LOGIN">
+            </div>
+
+            <p>Looking to <a href="#">create an account</a> ?</p>
+        </div>
+
         <div class="content">
             <h1>Taste the wild. <br>
                 Find your soul.
             </h1>
         </div>
     </section>
+
 
     <section class="carousel-section">
         <div class="title">
@@ -72,7 +140,7 @@
                 </div>
                 <h1>The Wild Peanut Butter</h1>
                 <p>€4,90</p>
-                <div style="background-color: rgba(114, 160, 128, 1)"><p>BUY NOW!</p></div>
+                <div class="buy-button" style="background-color: rgba(114, 160, 128, 1)"><p>BUY NOW!</p></div>
             </div>
 
             <div class="card" style="align-self: flex-end;">
@@ -81,7 +149,7 @@
                 </div>
                 <h1>Tahini with Cocoa & Honey</h1>
                 <p>€5,90</p>
-                <div style="background-color: rgba(169, 93, 80, 1)"><p>BUY NOW!</p></div>
+                <div  class="buy-button" style="background-color: rgba(169, 93, 80, 1)"><p>BUY NOW!</p></div>
             </div>
 
             <div class="card">
@@ -90,7 +158,7 @@
                 </div>
                 <h1>The Wild Hazelnut Butter</h1>
                 <p>€6,90</p>
-                <div style="background-color: rgba(171, 175, 214, 1)"><p>BUY NOW!</p></div>
+                <div  class="buy-button" style="background-color: rgba(171, 175, 214, 1)"><p>BUY NOW!</p></div>
             </div>
 
             <div class="card" style="align-self: flex-end;">
@@ -99,7 +167,7 @@
                 </div>
                 <h1>Tahini</h1>
                 <p>€4,90</p>
-                <div style="background-color: rgba(254, 207, 107, 1);"><p>BUY NOW!</p></div>
+                <div class="buy-button" style="background-color: rgba(254, 207, 107, 1);"><p>BUY NOW!</p></div>
             </div>
 
             <div class="card">
@@ -108,7 +176,7 @@
                 </div>
                 <h1>Cashew Butter</h1>
                 <p>€4,90</p>
-                <div style="background-color: #afe2f8"><p>BUY NOW!</p></div>
+                <div class="buy-button" style="background-color: #afe2f8"><p>BUY NOW!</p></div>
             </div>
 
             <div class="card" style="align-self: flex-end;">
@@ -117,7 +185,7 @@
                 </div>
                 <h1>Tahini with Honey</h1>
                 <p>€4,90</p>
-                <div style="background-color: #fff7b0"><p>BUY NOW!</p></div>
+                <div class="buy-button" style="background-color: #fff7b0"><p>BUY NOW!</p></div>
             </div>
 
             <div class="card">
@@ -126,7 +194,7 @@
                 </div>
                 <h1>High Fiber Tahini</h1>
                 <p>€4,90</p>
-                <div style="background-color: #a6d07d"><p>BUY NOW!</p></div>
+                <div class="buy-button" style="background-color: #a6d07d"><p>BUY NOW!</p></div>
             </div>
 
             <div class="card" style="align-self: flex-end;">
@@ -135,7 +203,7 @@
                 </div>
                 <h1>Almond Butter</h1>
                 <p>€4,90</p>
-                <div style="background-color: #f6b8d3"><p>BUY NOW!</p></div>
+                <div class="buy-button" style="background-color: #f6b8d3"><p>BUY NOW!</p></div>
             </div>
 
             <div class="card">
@@ -144,7 +212,7 @@
                 </div>
                 <h1>High Protein Tahini</h1>
                 <p>€4,90</p>
-                <div style="background-color: #f84f5a"><p>BUY NOW!</p></div>
+                <div class="buy-button" style="background-color: #f84f5a"><p>BUY NOW!</p></div>
             </div>
 
             <div class="card" style="align-self: flex-end;">
@@ -153,10 +221,11 @@
                 </div>
                 <h1>Tahini with Chia Seeds</h1>
                 <p>€4,90</p>
-                <div style="background-color: #ad6aa9"><p>BUY NOW!</p></div>
+                <div class="buy-button" style="background-color: #ad6aa9"><p>BUY NOW!</p></div>
             </div>
         </div>
     </section>
+
 
     <section class="three-pictures-section">
         <div class="title">
@@ -176,6 +245,7 @@
             <img src="./img/three-pictures1-3.png" alt="">
         </div>
     </section>
+
 
     <section class="products-review">
         <div class="product-description">
@@ -402,15 +472,15 @@
                 <div>
                     <h1>Follow Us</h1>
 
-                    <a href="https://www.instagram.com/wildsoulsgr/" target="_blank"><img src="./img/instagram.svg" alt=""></a>
-                    <a href="https://www.facebook.com/wildsoulsgr" target="_blank"><img src="./img/facebook.svg" alt=""></a>
+                    <a href="https://www.instagram.com/wildsoulsgr/" target="_blank" title="Instagram"><img src="./img/instagram.svg" alt=""></a>
+                    <a href="https://www.facebook.com/wildsoulsgr" target="_blank" title="Facebook"><img src="./img/facebook.svg" alt=""></a>
                 </div>
 
                 <div>
-                    <img src="./img/visa.svg" alt="">
-                    <img src="./img/mastercard.svg" alt="">
-                    <img src="./img/discover.svg" alt="">
-                    <img src="./img/paypal.svg" alt="">
+                    <img src="./img/visa.svg" alt="" title="Visa">
+                    <img src="./img/mastercard.svg" alt="" title="MasterCard">
+                    <img src="./img/discover.svg" alt="" title="Discover">
+                    <img src="./img/paypal.svg" alt="" title="PayPal">
                     <p>Copyright 2021 Wild Souls</p>
                     <p>Website by</p>
                 </div>
